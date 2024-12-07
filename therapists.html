@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Meet our experienced therapists specializing in various areas of mental health care.">
+    <title>Therapists - Mental Health Service</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .modal-content {
+            background-color: #fff;
+            margin: 10% auto;
+            padding: 20px;
+            border-radius: 8px;
+            width: 80%;
+            max-width: 500px;
+            text-align: center;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
+    <script>
+        function openModal(therapistName) {
+            document.getElementById('modal').style.display = 'block';
+            document.getElementById('therapistName').innerText = therapistName;
+        }
+
+        function closeModal() {
+            document.getElementById('modal').style.display = 'none';
+        }
+
+        function handleBooking(event) {
+            event.preventDefault();
+            alert('Appointment booked successfully!');
+            closeModal();
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <nav class="navbar" aria-label="Main Navigation">
+            <div class="logo" aria-label="Site Logo">Mental Health Service</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="login.html">Login</a></li>
+                <li><a href="register.html">Register</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="therapists.html">Therapists</a></li>
+                <li><a href="appointment.html">Appointments</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="therapists-section">
+        <div class="content-container" aria-labelledby="therapists-title">
+            <h1 id="therapists-title">Meet Our Dedicated Therapists</h1>
+            <p>Our team of highly qualified therapists is here to guide you on your journey toward mental wellness. Explore their specialties and book a session that suits your needs.</p>
+
+            <div class="therapist-list">
+                <div class="therapist-card">
+                    <img src="images/dr-alice.jpg" alt="Dr. Alice Johnson" class="therapist-photo">
+                    <h2 class="therapist-name">Dr. Alice Johnson</h2>
+                    <p><strong>Specialization:</strong> Clinical Psychology</p>
+                    <p>Dr. Johnson has over 10 years of experience in helping individuals manage anxiety, depression, and stress through evidence-based techniques.</p>
+                    <button class="btn" onclick="openModal('Dr. Alice Johnson')">Book Appointment</button>
+                </div>
+                <div class="therapist-card">
+                    <img src="images/dr-bob.jpg" alt="Dr. Bob Smith" class="therapist-photo">
+                    <h2 class="therapist-name">Dr. Bob Smith</h2>
+                    <p><strong>Specialization:</strong> Cognitive Behavioral Therapy</p>
+                    <p>Dr. Smith specializes in cognitive and behavioral approaches to help clients overcome negative thought patterns and build resilience.</p>
+                    <button class="btn" onclick="openModal('Dr. Bob Smith')">Book Appointment</button>
+                </div>
+                <div class="therapist-card">
+                    <img src="images/dr-charlie.jpg" alt="Dr. Charlie Brown" class="therapist-photo">
+                    <h2 class="therapist-name">Dr. Charlie Brown</h2>
+                    <p><strong>Specialization:</strong> Family Therapy</p>
+                    <p>Dr. Brown focuses on improving family dynamics and resolving conflicts to create a harmonious home environment.</p>
+                    <button class="btn" onclick="openModal('Dr. Charlie Brown')">Book Appointment</button>
+                </div>
+            </div>
+
+            <div class="cta-section">
+                <p>Not sure who to choose? <a href="contact.html">Contact us</a> for guidance, and we’ll help match you with the right therapist for your needs.</p>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Mental Health Service. All rights reserved.</p>
+        <nav aria-label="Footer Navigation">
+            <ul>
+                <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                <li><a href="terms-of-service.html">Terms of Service</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+        </nav>
+    </footer>
+
+    <!-- Modal -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2>Book Appointment with <span id="therapistName"></span></h2>
+            <form onsubmit="handleBooking(event)">
+                <label for="appointment-date">Choose Date:</label>
+                <input type="date" id="appointment-date" name="date" required>
+
+                <label for="appointment-time">Choose Time:</label>
+                <input type="time" id="appointment-time" name="time" required>
+
+                <button type="submit" class="btn">Confirm Booking</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

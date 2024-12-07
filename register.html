@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sign up for Mental Health Service and start your journey towards better mental health today.">
+    <title>Register - Mental Health Service</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar" aria-label="Main Navigation">
+            <div class="logo" aria-label="Site Logo">Mental Health Service</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="login.html">Login</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="form-section">
+        <div class="form-container" aria-labelledby="register-title">
+            <h1 id="register-title">Create Your Account</h1>
+            <p>Join our community and access personalized mental health resources.</p>
+            <form onsubmit="handleRegister(event)">
+                <label for="full-name">Full Name</label>
+                <input type="text" id="full-name" name="full-name" placeholder="Enter your full name" required>
+
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email" required>
+
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="Create a password" required>
+
+                <label for="confirm-password">Confirm Password</label>
+                <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirm your password" required>
+
+                <button type="submit" class="btn">Register</button>
+            </form>
+            <p class="login-prompt">Already have an account? <a href="login.html">Log in here</a>.</p>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Mental Health Service. All rights reserved.</p>
+        <nav aria-label="Footer Navigation">
+            <ul>
+                <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                <li><a href="terms-of-service.html">Terms of Service</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+        </nav>
+    </footer>
+
+    <script>
+        function handleRegister(event) {
+            event.preventDefault();
+            const fullName = document.getElementById('full-name').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirm-password').value;
+
+            // Basic validation
+            if (password !== confirmPassword) {
+                alert('Passwords do not match. Please try again.');
+                return;
+            }
+
+            if (fullName.trim() && email.trim() && password.trim()) {
+                alert('Registration successful! Redirecting to services...');
+                window.location.href = 'services.html';
+            } else {
+                alert('Please fill in all fields.');
+            }
+        }
+    </script>
+</body>
+</html>

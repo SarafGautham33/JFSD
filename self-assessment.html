@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Self Assessment - Mental Health Service</title>
+    <link rel="stylesheet" href="style.css">
+    <script>
+        function calculateResult() {
+            const scores = [];
+
+            document.querySelectorAll('.assessment-question select').forEach((select) => {
+                scores.push(Number(select.value));
+            });
+
+            const totalScore = scores.reduce((a, b) => a + b, 0);
+            let resultMessage = '';
+
+            if (totalScore <= 10) {
+                resultMessage = 'Your results indicate that you may be experiencing minimal mental health concerns. Keep maintaining a healthy lifestyle!';
+            } else if (totalScore <= 20) {
+                resultMessage = 'Your results suggest mild mental health concerns. It might be beneficial to consult with a therapist.';
+            } else {
+                resultMessage = 'Your results indicate moderate to severe concerns. We recommend reaching out to a professional for support.';
+            }
+
+            document.getElementById('assessment-result').innerText = resultMessage;
+            document.getElementById('result-section').style.display = 'block';
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <div class="navbar">
+            <div class="logo">Mental Health Service</div>
+        </div>
+    </header>
+
+    <div class="form-section">
+        <div class="form-container">
+            <h2>Self Assessment</h2>
+            <p>Please answer the following questions to help us understand your current mental health status.</p>
+            <form onsubmit="event.preventDefault(); calculateResult();">
+                <div class="assessment-question">
+                    <label for="question1">1. How often do you feel anxious or worried?</label>
+                    <select id="question1" name="question1" required>
+                        <option value="">Select an option</option>
+                        <option value="1">Never</option>
+                        <option value="2">Rarely</option>
+                        <option value="3">Sometimes</option>
+                        <option value="4">Often</option>
+                        <option value="5">Always</option>
+                    </select>
+                </div>
+
+                <div class="assessment-question">
+                    <label for="question2">2. How often do you have trouble sleeping?</label>
+                    <select id="question2" name="question2" required>
+                        <option value="">Select an option</option>
+                        <option value="1">Never</option>
+                        <option value="2">Rarely</option>
+                        <option value="3">Sometimes</option>
+                        <option value="4">Often</option>
+                        <option value="5">Always</option>
+                    </select>
+                </div>
+
+                <div class="assessment-question">
+                    <label for="question3">3. Do you find it difficult to concentrate?</label>
+                    <select id="question3" name="question3" required>
+                        <option value="">Select an option</option>
+                        <option value="1">Never</option>
+                        <option value="2">Rarely</option>
+                        <option value="3">Sometimes</option>
+                        <option value="4">Often</option>
+                        <option value="5">Always</option>
+                    </select>
+                </div>
+
+                <div class="assessment-question">
+                    <label for="question4">4. How would you rate your overall mood over the past week?</label>
+                    <select id="question4" name="question4" required>
+                        <option value="">Select an option</option>
+                        <option value="1">Very Positive</option>
+                        <option value="2">Somewhat Positive</option>
+                        <option value="3">Neutral</option>
+                        <option value="4">Somewhat Negative</option>
+                        <option value="5">Very Negative</option>
+                    </select>
+                </div>
+
+                <div class="assessment-question">
+                    <label for="question5">5. Do you feel supported by your friends or family?</label>
+                    <select id="question5" name="question5" required>
+                        <option value="">Select an option</option>
+                        <option value="1">Always</option>
+                        <option value="2">Often</option>
+                        <option value="3">Sometimes</option>
+                        <option value="4">Rarely</option>
+                        <option value="5">Never</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="btn">Submit Assessment</button>
+            </form>
+
+            <div id="result-section" style="display:none; margin-top: 20px;">
+                <h3>Your Assessment Result</h3>
+                <p id="assessment-result"></p>
+                <a href="therapists.html" class="btn">View Therapists</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
